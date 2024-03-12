@@ -1,0 +1,22 @@
+{
+  "name": "base-nodejs-project-template",
+  "version": "1.0.0",
+  "description": "Base nodejs project template",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Nikhil Thapa",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "http-status-codes": "^2.3.0",
+    "nodemon": "^3.1.0",
+    "winston": "^3.12.0"
+  },
+  "devDependencies": {
+    "prettier": "3.2.5"
+  }
+}
