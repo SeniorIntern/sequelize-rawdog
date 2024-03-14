@@ -15,10 +15,7 @@ async function createAirplane(data) {
         explanation.push(err.message);
       });
       console.log(explanation);
-      throw new AppError(
-        explanation,
-        StatusCodes.INTERNAL_SERVER_ERROR
-      );
+      throw new AppError(explanation, StatusCodes.INTERNAL_SERVER_ERROR);
     }
 
     throw new AppError(
