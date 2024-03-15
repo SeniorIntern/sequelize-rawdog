@@ -1,12 +1,12 @@
 const { AirplaneRepository } = require('../repositories');
 const { StatusCodes } = require('http-status-codes');
 
-const airplaneRespository = new AirplaneRepository();
+const airplaneRepository = new AirplaneRepository();
 const AppError = require('../utils/errors/app-error');
 
 async function createAirplane(data) {
   try {
-    const airplane = await airplaneRespository.create(data);
+    const airplane = await airplaneRepository.create(data);
     return airplane;
   } catch (error) {
     if (error.name === 'SequelizeValidationError') {
@@ -27,7 +27,7 @@ async function createAirplane(data) {
 
 async function getAirplanes() {
   try {
-    const airplanes = await airplaneRespository.getAll();
+    const airplanes = await airplaneRepository.getAll();
     return airplanes;
   } catch (error) {
     throw new AppError(
@@ -37,7 +37,26 @@ async function getAirplanes() {
   }
 }
 
+async function getAirplane(id) {
+  try {
+    const airplane = await airplaneRepository.get(id);
+    return airplane;
+  } catch (error) {
+    if (error.statusCode == StatusCodes.NOT_FOUND) {
+      throw new AppError(
+        'The airplane you requested is not present',
+        error.statusCode
+      );
+    }
+    throw new AppError(
+      'Cannot fetch data of all the airplanes',
+      StatusCodes.INTERNAL_SERVER_ERROR
+    );
+  }
+}
+
 module.exports = {
   createAirplane,
-  getAirplanes
+  getAirplanes,
+  getAirplane
 };
