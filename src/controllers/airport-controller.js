@@ -4,7 +4,7 @@ const { AirportService } = require('../services');
 const { SuccessResponse, ErrorResponse } = require('../utils/common');
 
 /**
- * POST : /airports 
+ * POST : /airports
  * req-body {name: 'IGI', cityId: 5, code: 'DEL'}
  */
 async function createAirport(req, res) {
@@ -16,17 +16,12 @@ async function createAirport(req, res) {
       cityId: req.body.cityId
     });
     SuccessResponse.data = airport;
-    return res
-      .status(StatusCodes.CREATED)
-      .json(SuccessResponse);
+    return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
-    return res
-      .status(error.statusCode)
-      .json(ErrorResponse);
+    return res.status(error.statusCode).json(ErrorResponse);
   }
 }
-
 
 /**
  * POST : /airports
@@ -36,33 +31,25 @@ async function getAirports(req, res) {
   try {
     const airports = await AirportService.getAirports();
     SuccessResponse.data = airports;
-    return res
-      .status(StatusCodes.OK)
-      .json(SuccessResponse);
+    return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
-    return res
-      .status(error.statusCode)
-      .json(ErrorResponse);
+    return res.status(error.statusCode).json(ErrorResponse);
   }
 }
 
 /**
- * POST : /airports/:id 
+ * POST : /airports/:id
  * req-body {}
  */
 async function getAirport(req, res) {
   try {
     const airports = await AirportService.getAirport(req.params.id);
     SuccessResponse.data = airports;
-    return res
-      .status(StatusCodes.OK)
-      .json(SuccessResponse);
+    return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
-    return res
-      .status(error.statusCode)
-      .json(ErrorResponse);
+    return res.status(error.statusCode).json(ErrorResponse);
   }
 }
 
@@ -74,14 +61,10 @@ async function destroyAirport(req, res) {
   try {
     const response = await AirportService.destroyAirport(req.params.id);
     SuccessResponse.data = response;
-    return res
-      .status(StatusCodes.OK)
-      .json(SuccessResponse);
+    return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
-    return res
-      .status(error.statusCode)
-      .json(ErrorResponse);
+    return res.status(error.statusCode).json(ErrorResponse);
   }
 }
 
@@ -90,4 +73,4 @@ module.exports = {
   getAirports,
   getAirport,
   destroyAirport
-}
+};

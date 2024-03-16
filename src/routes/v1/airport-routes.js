@@ -6,20 +6,19 @@ const { AirportMiddlewares } = require('../../middlewares');
 const router = express.Router();
 
 // /api/v1/airports POST
-router.post('/',
+router.post(
+  '/',
   AirportMiddlewares.validateCreateRequest,
-  AirportController.createAirport);
+  AirportController.createAirport
+);
 
 // /api/v1/airports GET
-router.get('/',
-  AirportController.getAirports);
+router.get('/', AirportController.getAirports);
 
 // /api/v1/airports/:id GET
-router.get('/:id',
-  AirportController.getAirport);
+router.get('/:id', AirportController.getAirport);
 
 // /api/v1/airports/:id DELETE
-router.delete('/:id',
-  AirportController.destroyAirport);
+router.delete('/:id', AirportController.destroyAirport);
 
 module.exports = router;
