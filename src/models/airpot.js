@@ -13,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.City, {
         foreignKey: 'cityId',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        onDelete: 'CASCADE'
       });
     }
   }
@@ -35,8 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         unique: true
       },
       cityId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.INTEGER
       }
     },
     {
